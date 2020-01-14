@@ -1,0 +1,20 @@
+BASEPATH=./
+SSEPATH=-I ./
+CPP=g++
+CFLAGS= -O3 -lm -std=gnu++11 $(SSEPATH) -I ./
+LDFLAGS = -std=gnu++11
+CPP_SOURCES= ./*.cpp
+OBJECTS=*.o
+EXECUTABLE = CLAMC
+
+
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CPP) $(OBJECTS) $(LDFLAGS) -o $@
+
+$(OBJECTS): $(CPP_SOURCES)
+	$(CPP) $(CFLAGS) -c $(DEBUG) $(CPP_SOURCES)
+
+clean:
+	rm -f *.o $(EXECUTABLE)
